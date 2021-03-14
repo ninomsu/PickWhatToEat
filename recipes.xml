@@ -1,39 +1,29 @@
 <?xml version="1.0"?>
 <data>
     <EatingOut>
-	<Restaurant name="Chic Fil A">
-            <Cost>$10</Cost>
-	    <CleanUpTime>1</CleanUpTime>
-    	</Restaurant>
-	<Restaurant name="Burger King">
-            <Cost>$8</Cost>
-	    <CleanUpTime>1</CleanUpTime>
-    	</Restaurant>
+		<Restaurant name="Chic Fil A" cost="$10" cleanUpTime="1"></Restaurant>
+		<Restaurant name="Burger King"  cost="$8" cleanUpTime="1"></Restaurant>
     </EatingOut>
     <EatingIn>
-	<Recipe name="Steak and Potatos">
-	    <Cost>$20</Cost>
-	    <CleanUpTime>20</CleanUpTime>
-	    <Link>www.youtube.com</Link>
-	    <CookTime>45 mins</CookTime>
-	    <Ingredients>
-		<Ingredient name="potato">
-		    <Quantity>2</Quantity>
-		    <Units>n/a</Units>
-		</Ingredient>
-	    </Ingredients>
+		<Recipe name="Steak and Potatos" cost="$20" cleanUpTime="20">
+			<Link>www.youtube.com</Link>
+			<CookTime>45 mins</CookTime>
+			<Ingredients>
+				<Ingredient name="potato">
+					<Quantity>2</Quantity>
+					<Units>n/a</Units>
+				</Ingredient>
+			</Ingredients>
     	</Recipe>
-	<Recipe name="Salmon and Green Asparagus">
-	    <Cost>$18</Cost>
-	    <CleanUpTime>20</CleanUpTime>
-	    <Link>www.reddit.com</Link>
-	    <CookTime>30 mins</CookTime>
-	    <Ingredients>
-		<Ingredient name="Asparagus">
-		    <Quantity>1</Quantity>
-		    <Units>pound</Units>
-		</Ingredient>
-	    </Ingredients>
+		<Recipe name="Salmon and Green Asparagus" cost="$18" cleanUpTime="20">
+			<Link>www.reddit.com</Link>
+			<CookTime>30 mins</CookTime>
+			<Ingredients>
+				<Ingredient name="Asparagus">
+					<Quantity>1</Quantity>
+					<Units>pound</Units>
+				</Ingredient>
+			</Ingredients>
     	</Recipe>
     </EatingIn>
 </data>
