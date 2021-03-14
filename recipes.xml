@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <data>
-	<Restaurant name="Chic Fil A" cost="$10" cleanUpTime="1"></Restaurant>
-	<Restaurant name="Burger King"  cost="$8" cleanUpTime="1"></Restaurant>
+	<Restaurant name="Chic Fil A" cost="$10" cleanUpTime="1 min"></Restaurant>
+	<Restaurant name="Burger King"  cost="$8" cleanUpTime="1 min"></Restaurant>
 	<Recipe name="Steak and Potatos" cost="$20" cleanUpTime="20 mins">
 		<Link>www.youtube.com</Link>
 		<CookTime>45 mins</CookTime>

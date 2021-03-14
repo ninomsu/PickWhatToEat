@@ -1,4 +1,5 @@
 import xml.etree.ElementTree as ET
+import random
 #TODO
 #Critera to ask user
 #how quick do you want to eat
@@ -36,6 +37,13 @@ class Meal:
         self.name ="n/a"
         self.cost = 0
         self.cleanUpTime = 0
+    
+    def Print(self):
+        print("Meal: {0}  \
+        \n\t Cost: {1}  \
+        \n\t Clean Up Time: {2}".format(self.name, self.cost, self.cleanUpTime))
+        print(" ")
+
 
 class Ingredient:
     def __init__(self):
@@ -62,6 +70,7 @@ class Recipe(Meal):
         \n\t Cook Time: {4} ".format(self.name, self.cost, self.cleanUpTime, self.link, self.cookTime))
         for ing in self.ingredients:
             ing.Print()
+        print(" ")
 
 class Restaurant(Meal):
     def __init__(self):
@@ -71,6 +80,7 @@ class Restaurant(Meal):
         print("Restaurant: {0}  \
         \n\t Cost: {1}  \
         \n\t Clean Up Time: {2}".format(self.name, self.cost, self.cleanUpTime))
+        print(" ")
 
 class XmlParser():
     def __init__(self, tags):
@@ -82,7 +92,7 @@ class XmlParser():
         self.tree = ET.parse(f)
         self.root = self.tree.getroot()
         
-    def ParseForEatingOut(self, printData = False):
+    def ParseForEatingOut(self):
         restaurants = []
         for restaurantXml in self.root.findall(self.tags.restaurant):
             restaurant = Restaurant()
@@ -93,7 +103,7 @@ class XmlParser():
         
         return restaurants
             
-    def ParseForEatingIn(self, printData = False):
+    def ParseForEatingIn(self):
         recipes = []
         for recipeXml in self.root.findall(self.tags.recipe):
             recipe = Recipe()
@@ -113,10 +123,6 @@ class XmlParser():
         
         return recipes
 
-    def GetMealOptions(self):
-        options = []
-        return options
-
 class XmlGenerator:
     def __init__(self):
         pass
@@ -128,22 +134,28 @@ def SelectOptions(options):
     #spawn a gui that allows the user to pick a certain number of food options
     pass
 
-def PickWhatToEatRandom():
-    print("Print something to eat")
-    return "bullshit"
+def PickWhatToEatRandom(meals):
+    random.random()
+    option = random.randrange(len(meals)-1)
+    print("\nYour randomly selected meal for the night is: \
+        \n===================================================")
+    meals[option].Print()
 
 xmlTags = XmlTags()
 parser = XmlParser(xmlTags)    
 parser.OpenXml("recipes.xml")
 #parser.OpenXml("countries.xml")
-restaurants = parser.ParseForEatingOut(True)
+restaurants = parser.ParseForEatingOut()
 for x in restaurants:
     x.Print()
 
-recipes = parser.ParseForEatingIn(True)
+recipes = parser.ParseForEatingIn()
 for x in recipes:
     x.Print()
 
-SelectOptions(parser.GetMealOptions())
-option = PickWhatToEatRandom()
-print(option)
+meals = []
+meals += restaurants
+meals += recipes
+
+SelectOptions(meals)
+PickWhatToEatRandom(meals)
