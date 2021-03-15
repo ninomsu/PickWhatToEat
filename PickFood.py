@@ -82,7 +82,7 @@ class Restaurant(Meal):
         \n\t Clean Up Time: {2}".format(self.name, self.cost, self.cleanUpTime))
         print(" ")
 
-class XmlParser():
+class XmlHandler():
     def __init__(self, tags):
         self.root = None
         self.tree =  None
@@ -122,13 +122,27 @@ class XmlParser():
             recipes.append(recipe)
         
         return recipes
+    
+    def CreateDocument(self):
+        print("Creating Xml Document for Meals")
 
-class XmlGenerator:
-    def __init__(self):
-        pass
-
-    def CreateRecipe(self):
+    def AddRecipe(self):
         print("We are creating recipes")
+
+
+    def AddRestaurant(self):
+        print("We are adding Restaurant")
+    
+    def EditRecipe(self, name):
+
+      #  topic=self.root.find(".//*[@topic='Salmon and Green Asparagus']").text
+       # print(topic)
+#        print(self.root.find(".//*[@name="+ name + "'/1']").text)
+        print("We are editing an exisitng recipe")
+
+    def EditRestaurant(self):
+        print("We are editing an existing restaurant")   
+
 
 def SelectOptions(options):
     #spawn a gui that allows the user to pick a certain number of food options
@@ -142,14 +156,14 @@ def PickWhatToEatRandom(meals):
     meals[option].Print()
 
 xmlTags = XmlTags()
-parser = XmlParser(xmlTags)    
-parser.OpenXml("recipes.xml")
-#parser.OpenXml("countries.xml")
-restaurants = parser.ParseForEatingOut()
+handler = XmlHandler(xmlTags)    
+handler.OpenXml("recipes.xml")
+#handler.OpenXml("countries.xml")
+restaurants = handler.ParseForEatingOut()
 for x in restaurants:
     x.Print()
 
-recipes = parser.ParseForEatingIn()
+recipes = handler.ParseForEatingIn()
 for x in recipes:
     x.Print()
 
@@ -159,3 +173,4 @@ meals += recipes
 
 SelectOptions(meals)
 PickWhatToEatRandom(meals)
+handler.EditRecipe("Salmon and Green Asparagus")
